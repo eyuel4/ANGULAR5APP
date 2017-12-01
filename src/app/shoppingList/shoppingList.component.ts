@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Ingredient } from '../shared/model/ingredient.model';
+import { ShoppingListService } from '../shoppingList/shoppingList.service';
 
 @Component({
     selector:'app-shoppingList',
@@ -9,15 +10,19 @@ import { Ingredient } from '../shared/model/ingredient.model';
 })
 
 export class ShoppingListComponent implements OnInit {
-    ingredients: Ingredient[]= [
-        new Ingredient('Apples', 5),
-        new Ingredient('Tomatoes', 15)
-    ];
+    ingredients: Ingredient[];
 
-    constructor() {
+    constructor(private shoopingListService: ShoppingListService) {
 
     }
 
     ngOnInit(): void {
+        this.ingredients = this.shoopingListService.getIngredients();
+        this.shoopingListService.ingredientsChagedEvent.subscribe(
+            (ingredients: Ingredient[]) => {
+                this.ingredients = ingredients;
+            }
+        );
     }
+
 }
