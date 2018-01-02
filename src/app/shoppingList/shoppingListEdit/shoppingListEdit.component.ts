@@ -20,7 +20,7 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
     editedItem: Ingredient;
 
     constructor(private shoppingListService : ShoppingListService) {
-
+        this.subscription = new Subscription();
     }
 
     ngOnInit() {
