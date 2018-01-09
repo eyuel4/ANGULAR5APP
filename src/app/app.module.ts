@@ -22,29 +22,25 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
+import { RecipesModule } from './recipes/recipes.module';
+import { SharedModule } from './shared/shared.module';
+import { ShoppingListModule } from './shoppingList/shoppingList.module';
+import { AuthModule } from './auth/auth.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingListEditComponent,
-    RecipeDetailComponent,
-    DropDownDirective,
-    RecipeStartComponent,
-    RecipeEditComponent,
-    SigninComponent,
-    SignupComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     HttpModule,
-    FormsModule
+    RecipesModule,
+    SharedModule,
+    ShoppingListModule,
+    AuthModule
   ],
   providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
